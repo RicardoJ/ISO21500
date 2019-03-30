@@ -7,7 +7,7 @@ const app = function appBuilder({ router, port, baseUrl }) {
   const server = express();
 server.use(bodyParser.urlencoded({ extended: false }))
 server.use(bodyParser.json())
-  server.use(baseUrl, router);
+server.use(baseUrl, router);
 
   //Connecting to MongoDB database
   mongoose.connect(process.env.DB_CONNECTION_STRING, { useNewUrlParser: true });

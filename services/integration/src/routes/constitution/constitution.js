@@ -1,5 +1,5 @@
 const Router = require('express').Router();
-const constitution = require('../controllers/constitution');
+const constitution = require('../../controllers/constitution/constitution');
 
 Router.post('/', constitution.create);
 Router.get('/:id', constitution.get);

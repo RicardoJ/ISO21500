@@ -1,34 +1,38 @@
-const Constitution = require('../models/constitution.model');
+const Teams = require('../models/teams.model');
 const { asyncHandler } = require('../utils');
 
 const create = asyncHandler(async (req, res) => {
-  res.send({ message: 'Operation not supported' });
+  const teams = new Teams(req.body);
+  await teams.save();
+  res.send({ message:'Teams Created successfully'});
 });
 
 const get = asyncHandler(async (req, res) => {
   const { id } = req.params;
-  const actOfConstitution = await Constitution.findById(id);
-  res.send(actOfConstitution);
+  const teams = await Teams.findById(id);
+  res.send( teams);
 });
 
 const find = asyncHandler(async (req, res) => {
-  res.send({ message: 'Operation not supported' });
+  const teams = await Teams.find({});
+
+  res.send( teams);
 });
 
 const update = asyncHandler(async (req, res) => {
   const { id } = req.params;
-  const updatedDocument = await Constitution.findByIdAndUpdate(id, {
+  const updatedTeams = await Teams.findByIdAndUpdate(id, {
     $set: req.body
   });
 
-  res.send({ message: 'Document udpated.', updatedDocument });
+  res.send({ message: 'Teams udpated', updatedTeams });
 });
 
 const remove = asyncHandler(async (req, res) => {
   const { id } = req.params;
-  await Constitution.findByIdAndRemove(id);
+  await Teams.findByIdAndRemove(id);
 
-  res.send('Deleted successfully!');
+  res.send({ message: 'Deleted successfully!' });
 });
 
 module.exports = { create, get, find, remove, update };
