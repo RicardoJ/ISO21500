@@ -1,4 +1,4 @@
-const PreviousInformation = require('../../models/previousInformation/PreviousInformation.Model');
+const PreviousInformation = require('../../models/previousInformation/PreviousInformation.model');
 const { asyncHandler } = require('../../utils');
 
 const create = asyncHandler(async (req, res) => {
