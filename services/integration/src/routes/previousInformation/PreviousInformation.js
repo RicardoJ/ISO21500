@@ -1,4 +1,4 @@
-const Router = require('./node_modules/express').Router();
+const Router = require('express').Router();
 const previousInformation = require('../../controllers/previousInformation/previousInformation');
 
 Router.post('/', previousInformation.create);
